@@ -4,12 +4,24 @@ public class Deductions {
     private double IncomeTax;
     private double PRSI;
     private double USC;
+    private double HealthInsurance;
+    private double UnionFees;
     private double NetPay;
     private int PayWeek;
 
     public Deductions(double grossPay, int PayWeek) {
         this.grossPay = grossPay;
         this.PayWeek = PayWeek;
+    }
+
+    public double getHealthInsurance(){
+        HealthInsurance = 40;
+        return HealthInsurance;
+    }
+
+    public double getUnionFees(){
+        UnionFees = 25;
+        return UnionFees;
     }
 
     public double getIncomeTax() {
@@ -22,22 +34,22 @@ public class Deductions {
     }
 
     public double getPRSI (){
-      if (PayWeek == 4) {
-          if (grossPay / 4 <= 352) {
-              PRSI = 0;
-          } else if (grossPay / 4 >= 352.01) {
-              PRSI = 0.041;
-          }
-      }
-      else if (PayWeek == 5) {
-          if (grossPay / 5 <= 352){
-              PRSI = 0;
-          }
-          else if (grossPay / 4 >= 352.01){
-              PRSI = 0.041;
-          }
-      }
-      return PRSI;
+        if (PayWeek == 4) {
+            if (grossPay / 4 <= 352) {
+                PRSI = 0;
+            } else if (grossPay / 4 >= 352.01) {
+                PRSI = 0.041;
+            }
+        }
+        else if (PayWeek == 5) {
+            if (grossPay / 5 <= 352){
+                PRSI = 0;
+            }
+            else if (grossPay / 4 >= 352.01){
+                PRSI = 0.041;
+            }
+        }
+        return PRSI;
     }
 
     public double getUSC() {
@@ -55,8 +67,8 @@ public class Deductions {
     }
 
     public double getNetPay() {
-      NetPay = grossPay - (IncomeTax + PRSI + USC);
-      return NetPay;
+        NetPay = grossPay - (IncomeTax + PRSI + USC + HealthInsurance + UnionFees);
+        return NetPay;
     }
 
 
