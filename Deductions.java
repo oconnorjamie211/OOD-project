@@ -26,7 +26,7 @@ public class Deductions {
         }
     }
 
-    public double getgrossPay(){
+    public double getgrossPay(){ //Part time version needs to be added here.
         if (PayWeeks == 4){
             grossPay = ((grossSalary/52) * 4);
         }else if (PayWeeks == 5){
